@@ -11,6 +11,10 @@
 			"ImportPath": "github.com/go-martini/martini",
 			"Comment": "v1.0-128-ge038957",
 			"Rev": "e038957346d959db124df28ebf5c0adb7e7866bf"
+		},
+		{
+			"ImportPath": "github.com/yanatan16/golang-instagram/instagram",
+			"Rev": "4b742d0226cc057240142e9adf8281f6345f04ab"
 		}
 	]
 }
