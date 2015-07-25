@@ -4,7 +4,6 @@ import (
   "os"
   "github.com/go-martini/martini"
   "github.com/yanatan16/golang-instagram/instagram"
-  //"./instagram"
   "encoding/json"
   //"fmt"
   "net/url"
@@ -27,83 +26,63 @@ func main() {
   })
 
 
-  m.Get("/checkInsta", func() string {
-    instaClienKey := "ec769078ea8a4872b2dbf0c403168939";
-    // unauthorized api client pass only clientId
-    // for auth need pass second param - token
-    insta := instagram.New(instaClienKey, "")
+  // Instagram API
+  instaClienKey := "ec769078ea8a4872b2dbf0c403168939";
+  // unauthorized api client pass only clientId
+  // for auth need pass second param - token
+  instaApi := instagram.New(instaClienKey, "")
 
-    response, err := insta.GetMediaPopular(nil);
+  m.Get("/insta/pop", func() string {
+    res, err := instaApi.GetMediaPopular(nil);
     if err != nil {
   		panic(err)
   	}
-  	//fmt.Println("Successfully created instagram.Api without user credentials")
-    res1B, _ := json.Marshal(response)
-    return string(res1B)
-      //return json.Marshal(response);
+
+    resJson, _ := json.Marshal(res)
+
+    return string(resJson)
   })
 
-  m.Get("/checkMyInsta", func() string {
-    // insta
-    instaClienKey := "ec769078ea8a4872b2dbf0c403168939"
-    // unauthorized api client pass only clientId
-    // for auth need pass second param - token
-    insta := instagram.New(instaClienKey, "")
-
+  m.Get("/insta/my", func() string {
     // user id not the same as username
-    // lookup user id by name here http://jelled.com/instagram/lookup-user-id#
+    // saerch user id by name
     myId := "263020745"
-    response, err := insta.GetUserRecentMedia(myId, nil);
+    res, err := instaApi.GetUserRecentMedia(myId, nil);
     if err != nil {
   		panic(err)
   	}
-  	//fmt.Println("Successfully created instagram.Api without user credentials")
-    res1B, _ := json.Marshal(response)
-    return string(res1B)
-      //return json.Marshal(response);
+
+    resJson, _ := json.Marshal(res)
+
+    return string(resJson)
   })
 
-  m.Get("/checkPhilippinesInsta", func() string {
-    // insta
-    instaClienKey := "ec769078ea8a4872b2dbf0c403168939"
-    // unauthorized api client pass only clientId
-    // for auth need pass second param - token
-    insta := instagram.New(instaClienKey, "")
-
-    // user id not the same as username
-    // lookup user id by name here http://jelled.com/instagram/lookup-user-id#
-    id := "1651025335"
-    response, err := insta.GetUserRecentMedia(id, nil);
+  m.Get("/insta/philippines", func() string {
+    uid := "1651025335"
+    res, err := instaApi.GetUserRecentMedia(uid, nil);
     if err != nil {
       panic(err)
     }
-    //fmt.Println("Successfully created instagram.Api without user credentials")
-    res1B, _ := json.Marshal(response)
-    return string(res1B)
-      //return json.Marshal(response);
+    resJson, _ := json.Marshal(res)
+
+    return string(resJson)
   })
 
-  m.Get("/instaSearch/:name", func(params martini.Params) string {
+  m.Get("/insta/search/:name", func(params martini.Params) string {
     searchName := params["name"]
 
-    iparams := url.Values{}
-  	iparams.Set("count", "5") // Get 5 users
-  	iparams.Set("q", searchName)  // Search for user
+    instaParams := url.Values{}
+    instaParams.Set("count", "5") // Get 5 users
+    instaParams.Set("q", searchName)  // Search for user
 
-    // insta
-    instaClienKey := "ec769078ea8a4872b2dbf0c403168939"
-    // unauthorized api client pass only clientId
-    // for auth need pass second param - token
-    insta := instagram.New(instaClienKey, "")
-
-    response, err := insta.GetUserSearch(iparams);
+    res, err := instaApi.GetUserSearch(instaParams);
     if err != nil {
   		panic(err)
   	}
-  	//fmt.Println("Successfully created instagram.Api without user credentials")
-    res1B, _ := json.Marshal(response)
-    return string(res1B)
-      //return json.Marshal(response);
+
+    resJson, _ := json.Marshal(res)
+
+    return string(resJson)
   })
 
 
