@@ -54,9 +54,9 @@ func main() {
     // lookup user id by name here http://jelled.com/instagram/lookup-user-id#
     myId := "263020745"
     response, err := insta.GetUserRecentMedia(myId, nil);
-    if err != nil {
+    /*if err != nil {
   		panic(err)
-  	}
+  	}*/
   	//fmt.Println("Successfully created instagram.Api without user credentials")
     res1B, _ := json.Marshal(response)
     return string(res1B)
