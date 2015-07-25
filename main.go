@@ -55,7 +55,7 @@ func main() {
     myId := "263020745"
     response, err := insta.GetUserRecentMedia(myId, nil);
     if err != nil {
-  		//panic(err)
+  		panic(err)
   	}
   	//fmt.Println("Successfully created instagram.Api without user credentials")
     res1B, _ := json.Marshal(response)

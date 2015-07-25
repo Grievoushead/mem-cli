@@ -31,7 +31,7 @@ func (api *Api) GetUserFeed(params url.Values) (res *PaginatedMediasResponse, er
 // Gets /users/{user-id}/media/recent
 func (api *Api) GetUserRecentMedia(userId string, params url.Values) (res *PaginatedMediasResponse, err error) {
 	res = new(PaginatedMediasResponse)
-	err = api.get(fmt.Sprintf("/users/%s/media/recent??access_token=d4d11e20678c4200838930dae9de038d", userId), params, res)
+	err = api.get(fmt.Sprintf("/users/%s/media/recent", userId), params, res)
 	return
 }
 

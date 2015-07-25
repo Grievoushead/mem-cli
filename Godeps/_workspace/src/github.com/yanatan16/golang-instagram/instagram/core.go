@@ -39,9 +39,6 @@ func buildGetRequest(urlStr string, params url.Values) (*http.Request, error) {
 		return nil, err
 	}
 
-	fmt.Println("params:",params)
-	fmt.Println("uRawQuery:",u.RawQuery)
-	fmt.Println("urlStr:",urlStr)
 	// If we are getting, then we can't merge query params
 	if params != nil {
 		if u.RawQuery != "" {
