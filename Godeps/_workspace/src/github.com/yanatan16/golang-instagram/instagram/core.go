@@ -90,7 +90,7 @@ func decodeResponse(body io.Reader, to interface{}) error {
 	//fmt.Println("Body:",string(b))
 	// err := json.Unmarshal(b, to)
 	err := json.NewDecoder(body).Decode(to)
-	fmt.Println("Body: " + string(body))
+	//fmt.Println("Body: " + string(body))
 
 	if err != nil {
 		return fmt.Errorf("instagram: error decoding body; %s", err.Error())
