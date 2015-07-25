@@ -3,8 +3,8 @@ package main
 import (
   "os"
   "github.com/go-martini/martini"
-  //"github.com/yanatan16/golang-instagram/instagram"
-  "./instagram"
+  "github.com/yanatan16/golang-instagram/instagram"
+  //"./instagram"
   "encoding/json"
   //"fmt"
   "net/url"
