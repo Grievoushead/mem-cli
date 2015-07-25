@@ -40,6 +40,8 @@ func buildGetRequest(urlStr string, params url.Values) (*http.Request, error) {
 	}
 
 	// If we are getting, then we can't merge query params
+	fmt.Println("params:",params)
+	fmt.Println("uRawQuery:",u.RawQuery)
 	if params != nil {
 		if u.RawQuery != "" {
 			return nil, fmt.Errorf("Cannot merge query params in urlStr and params")
