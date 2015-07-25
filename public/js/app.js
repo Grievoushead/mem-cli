@@ -1,19 +1,19 @@
 var api = window.api || {};
 
-
-
 api.hello = function(){
   window.location.href = '/hello';
 };
 
-api.checkInsta = function(){
-  window.location.href = '/checkInsta';
+api.panic = function(){
+  window.location.href = '/panic';
 };
 
-api.checkPhilippinesInsta = function(){
+api.insta = {};
+
+api.insta.philippines = function(){
   var content = document.getElementById('content');
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', '/checkPhilippinesInsta', false);
+  xhr.open('GET', '/insta/philippines', false);
   xhr.send();
   if (xhr.status != 200) {
     console.error( xhr.status + ': ' + xhr.statusText );

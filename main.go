@@ -68,7 +68,7 @@ func main() {
     return string(resJson)
   })
 
-  m.Get("/insta/search/:name", func(params martini.Params) string {
+  m.Get("/insta/philippines", func(params martini.Params) string {
     searchName := params["name"]
 
     instaParams := url.Values{}
