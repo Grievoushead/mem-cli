@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	// "io/ioutil"
+	//"io/ioutil"
 	"net/http"
 	"net/url"
 )
@@ -86,11 +86,10 @@ func (api *Api) do(req *http.Request, r interface{}) error {
 }
 
 func decodeResponse(body io.Reader, to interface{}) error {
-	b, _ := ioutil.ReadAll(body)
-	fmt.Println("Body:",string(b))
+	//b, _ := ioutil.ReadAll(body)
+	//fmt.Println("Body:",string(b))
 	// err := json.Unmarshal(b, to)
 	err := json.NewDecoder(body).Decode(to)
-	fmt.Println("Body: " + string(body))
 
 	if err != nil {
 		return fmt.Errorf("instagram: error decoding body; %s", err.Error())
